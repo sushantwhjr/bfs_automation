@@ -1,0 +1,18 @@
+
+Feature: Registration Page Features
+  
+  # for the 3rd and 4th URL the expected URLs are different from the test cses
+  # do we need VPN for non India scenarios??
+  # non India cases are redirecting to India URL
+  Scenario Outline: Verify redirection of trial urls
+    Given I am a new user
+    When I hit the url "<hittedURL>"
+    Then I should be redirected to the url "<navigatedUrl>"
+    
+ 	Examples:
+ 	|	hittedURL	|	navigatedUrl	|
+ 	|https://code-stage.whjr.one/trial/register | https://code-stage.whjr.one/coding/mastery/trial/register |
+ 	|https://code-stage.whjr.one/coding/trial/register	|	https://code-stage.whjr.one/coding/mastery/trial/register?courseType=coding |
+  |https://code-stage-byfs.whjr.one/trial/register|https://code-stage-byfs.whjr.one/coding/mastery/trial/register|
+  |https://code-stage-byfs.whjr.one/coding/trial/register|https://code-stage-byfs.whjr.one/coding/mastery/trial/register?courseType=coding|
+  

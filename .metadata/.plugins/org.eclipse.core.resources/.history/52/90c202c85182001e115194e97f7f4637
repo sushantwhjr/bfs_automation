@@ -1,0 +1,15 @@
+
+Feature: Registration Page Features
+  
+  Scenario Outline: Verify redirection of trial urls
+    Given I am a new user
+    When I hit the url "<hittedURL>"
+    Then I should be redirected to the url "<navigatedUrl>"
+    
+ 	Examples:
+ 	|	hittedURL	|	navigatedUrl	|
+ 	|https://code-stage.whjr.one/trial/register | https://code-stage.whjr.one/coding/mastery/trial/register |
+ 	#|https://code-stage.whjr.one/coding/trial/register|https://code-stage.whjr.one/coding/mastery/trial/register |
+  #|https://code-stage-byfs.whjr.one/trial/register|https://code-stage-byfs.whjr.one/coding/trial/register|
+  #|https://code-stage-byfs.whjr.one/coding/trial/register|https://code-stage-byfs.whjr.one/coding/trial/register|
+  

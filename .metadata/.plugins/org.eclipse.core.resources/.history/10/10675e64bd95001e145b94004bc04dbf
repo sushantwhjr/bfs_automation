@@ -1,0 +1,15 @@
+package utils;
+
+import pageObjects.PageObjectManager;
+import org.openqa.selenium.WebDriver;
+
+public class TestContextSetup {
+	
+	//class constructor
+	public TestContextSetup() {
+		
+		public WebDriver webdriver;
+		
+	}
+
+}

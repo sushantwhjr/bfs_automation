@@ -1,0 +1,82 @@
+package stepDefinitions;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class RegistrationPageStepDefinitions {
+	
+	WebDriver driver = new ChromeDriver();
+		
+	@Given("I am a new user")
+	public void i_am_a_new_user() {
+	    // Do nothing as of now
+		//code to be written after confirmation from manual team
+	}
+
+	@When("I hit the url {string}")
+	public void i_hit_the_url(String navUrl) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", 
+				"E:\\BFS Test Automation\\ChromeDriver\\chromedriver.exe");
+		driver.get(navUrl);
+		driver.manage().window().maximize();
+	    Thread.sleep(3000);
+	}
+
+	@Then("I should be redirected to the url {string}")
+	public void i_should_be_redirected_to_the_url(String expectedUrl) {
+	    String actualUrl = driver.getCurrentUrl();
+	    Assert.assertEquals(actualUrl, expectedUrl);
+	    //driver.quit();
+	}
+	
+	@Given("I navigate to the URL {string}")
+	public void i_navigate_to_the_url(String navUrl) throws InterruptedException {
+		i_hit_the_url(navUrl);
+	}
+
+	@When("I do nothing")
+	public void i_do_nothing() {
+	    // do nothing
+	}
+
+	@Then("Validate if WhitehatJr branding logo is visible")
+	public void validate_if_whitehat_jr_branding_logo_is_visible() {
+	    WebElement brandingLogo = driver.findElement(By.
+	    		xpath("//div[contains(@class,'container-fluid')]/div/div/div/div/div/div/h6/img"));
+	    Assert.assertTrue(brandingLogo.isDisplayed());
+	}
+	
+	@Then("Validate if Phone number field is visible")
+	public void validate_if_phone_number_field_is_visible() {
+		WebElement phoneNoField = driver.findElement(By.
+	    		xpath("//input[@name='mobile']"));
+	    Assert.assertTrue(phoneNoField.isDisplayed());
+	}
+	
+	@Then("Validate is grades bucket is visible")
+	public void validate_is_grades_bucket_is_visible() {
+		List <WebElement> gradeKeys = driver.
+				findElements(By.xpath("//div[@id='grade']/label/span/div/div[contains(@class,'heading_bold')]"));
+		int gradeOptions = gradeKeys.size();
+		Assert.assertEquals(gradeOptions, 5);
+	}
+
+	@After
+	public void doSomethingAfter(Scenario scenario){
+	    // Do something after after scenario
+		driver.quit();
+	}
+
+}

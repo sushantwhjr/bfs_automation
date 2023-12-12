@@ -1,0 +1,45 @@
+package stepDefinitions;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import utils.TestContextSetup;
+import org.openqa.selenium.WebDriver;
+
+public class RegistrationPageStepDefinitions {
+	
+	WebDriver driver = new ChromeDriver();
+	TestContextSetup testContextSetup;
+	
+	
+	
+	
+	
+	public RegistrationPageStepDefinitions(TestContextSetup testContextSetup) {
+		this.testContextSetup = testContextSetup;
+	}
+	
+	@Given("I am a new user")
+	public void i_am_a_new_user() {
+	    // Do nothing as of now
+		//code to be written after confirmation from manual team
+	}
+
+	@When("I hit the url {string}")
+	public void i_hit_the_url(String navUrl) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", 
+				"E:\\BFS Test Automation\\ChromeDriver\\chromedriver.exe");
+		driver.get(navUrl);
+	    Thread.sleep(3000);
+	}
+
+	@Then("I should be redirected to the url {string}")
+	public void i_should_be_redirected_to_the_url(String expectedUrl) {
+	    String actualUrl = driver.getCurrentUrl();
+	    Assert.assertEquals(actualUrl, expectedUrl);
+	}
+
+}

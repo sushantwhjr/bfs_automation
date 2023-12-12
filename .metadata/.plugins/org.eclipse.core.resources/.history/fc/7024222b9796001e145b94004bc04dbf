@@ -1,0 +1,35 @@
+package utils;
+
+import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
+
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
+
+
+public class OTPGenerator {
+
+	public String getOTP(String mobNum) {
+		String otp = "";
+		
+		RestAssured.baseURI = "https://stage-api.whjr.one";
+		
+		String postResponse = given().log().all().header("Authorization",
+				"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlblZlcnNpb24iOjMsImlkIjoiZjE2ZTM0MzctODdkZS00ZTQzLWJlNjctOGQ0MTRlZWYzYTJkIiwidG9rZW5UeXBlIjoicHJpbWFyeV90b2tlbiIsImV4cCI6MTcwMjk4MjEyMSwiaWF0IjoxNjk1MjA2MTIxfQ.URn1eQ78ee6PUjiME4a24r0LZvzOfXKmsx5OeYkv7wg")
+				.header("Content-Type", "application/json")
+				.body(
+						"{\r\n"
+						+ "    \"cacheName\": \"OTP\",\r\n"
+						+ "    \"key\": \"+91_9563535536_otp_token\"\r\n"
+						+ "}")
+				.when().post("api/V1/caching/getRedisCacheByKey")
+				.then().extract().response().asString();
+		
+		JsonPath js = new JsonPath(postResponse);
+		otp = js.getString("data");
+		
+		
+		return otp;
+	}
+
+}

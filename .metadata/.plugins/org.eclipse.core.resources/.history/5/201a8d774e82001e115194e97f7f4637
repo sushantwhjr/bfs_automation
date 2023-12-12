@@ -1,0 +1,36 @@
+package stepDefinitions;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import utils.TestContextSetup;
+
+public class RegistrationPageStepDefinitions {
+	
+	TestContextSetup testContextSetup;
+	
+	public RegistrationPageStepDefinitions(TestContextSetup testContextSetup) {
+		this.testContextSetup = testContextSetup;
+	}
+	
+	testContextSetup.driver = new ChromeDriver();
+	
+	@Given("I am a new user")
+	public void i_am_a_new_user() {
+	    // Do nothing as of now
+		//code to be written after confirmation from manual team
+	}
+
+	@When("I hit the url {string}")
+	public void i_hit_the_url(String string) {
+		
+	    
+	}
+
+	@Then("I should be redirected to the url {string}")
+	public void i_should_be_redirected_to_the_url(String string) {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+}

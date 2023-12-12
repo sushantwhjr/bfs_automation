@@ -1,0 +1,8 @@
+
+Feature: Registration Page Features
+  
+  @new
+  Scenario: TC_1_12_Verify OTP screen UI
+  	Given I navigate to the url "https://code-stage.whjr.one/coding/mastery/trial/register"
+  	When I enter the phone number "2536253625" and select grade "3" and click on schedule now button
+  	Then OTP modal with proper details and mobile number "2536253625" should be displayed

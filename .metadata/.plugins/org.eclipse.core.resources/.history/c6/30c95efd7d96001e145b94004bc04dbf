@@ -1,0 +1,50 @@
+package stepDefinitions;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import pageObjects.RegistrationPage;
+import utils.TestContextSetup;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class RegistrationPageStepDefinitions {
+	
+	TestContextSetup testContextSetup;
+	
+	public RegistrationPageStepDefinitions() {
+		this.testContextSetup = testContextSetup;
+	}
+	
+	@Given("I navigate to the url {string}")
+	public void i_navigate_to_the_url(String url) throws InterruptedException {
+	    // Write code here that turns the phrase above into concrete actions
+	    RegistrationPage registrationPage = testContextSetup.pageObjectManager.getRegistrationPage();
+	    registrationPage.navigateToUrl(url);
+	}
+
+	@When("I enter the phone number {string} and select grade {string} and click on schedule now button")
+	public void i_enter_the_phone_number_and_select_grade_and_click_on_schedule_now_button(String phoneNumber, String grade) {
+		RegistrationPage registrationPage = testContextSetup.pageObjectManager.getRegistrationPage();
+		registrationPage.enterPhoneNumber(phoneNumber);
+		registrationPage.selectGradeFromGradeBucket(grade);
+		registrationPage.clicOnScheduleClassButton();
+	}
+
+	@Then("OTP modal with proper should be displayed")
+	public void otp_modal_with_proper_should_be_displayed() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	
+}

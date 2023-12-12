@@ -1,0 +1,44 @@
+
+Feature: Registration Page Features
+  
+   #for the 3rd and 4th URL the expected URLs are different from the test cses
+   #do we need VPN for non India scenarios??
+   #non India cases are redirecting to India URL
+  
+  Scenario Outline: Verify launch of registration page
+    Given I am a new user
+    When I hit the url "<navigatedUrl>"
+    Then I should be redirected to the url "<redirectedUrl>"
+    
+ 	Examples:
+ 	|	navigatedUrl	|	redirectedUrl	|
+ 	|https://code-stage.whjr.one/trial/register | https://code-stage.whjr.one/coding/mastery/trial/register |
+ 	|https://code-stage.whjr.one/coding/trial/register	|	https://code-stage.whjr.one/coding/mastery/trial/register?courseType=coding |
+  |https://code-stage-byfs.whjr.one/trial/register|https://code-stage-byfs.whjr.one/coding/mastery/trial/register|
+  |https://code-stage-byfs.whjr.one/coding/trial/register|https://code-stage-byfs.whjr.one/coding/mastery/trial/register?courseType=coding|
+  
+  
+  Scenario: Verify the UI elements on registration page validate WhitehatJr branding logo
+  	Given I navigate to the URL "https://code-stage.whjr.one/coding/mastery/trial/register"  
+  	When I do nothing
+  	#Then Validate if WhitehatJr branding logo is visible
+  	Then Validate the registration page UI elements
+  	
+  	
+   Scenario: Verify the UI elements on registration page validate Phone number field
+  	Given I navigate to the URL "https://code-stage.whjr.one/coding/mastery/trial/register"  
+  	When I do nothing
+  	Then Validate if Phone number field is visible
+  	
+  	
+  Scenario: Verify the UI elements on registration page validate grades bucket
+  	Given I navigate to the URL "https://code-stage.whjr.one/coding/mastery/trial/register"  
+  	When I do nothing
+  	Then Validate is grades bucket is visible
+  
+  
+	@new
+  Scenario: TC_1_12_Verify OTP screen UI
+  	Given I navigate to the url "https://code-stage.whjr.one/coding/mastery/trial/register"
+  	When I enter the phone number "2536253625" and select grade "3-4" and click on schedule now button
+  	Then OTP modal with proper should be displayed

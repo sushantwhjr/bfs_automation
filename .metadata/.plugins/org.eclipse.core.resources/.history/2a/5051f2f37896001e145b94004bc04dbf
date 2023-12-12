@@ -1,0 +1,15 @@
+package pageObjects;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class RegistrationPage {
+	
+	public WebDriver driver;
+	
+	//class constructor
+	public RegistrationPage(WebDriver driver) {
+		this.driver = driver; 
+	}
+
+}

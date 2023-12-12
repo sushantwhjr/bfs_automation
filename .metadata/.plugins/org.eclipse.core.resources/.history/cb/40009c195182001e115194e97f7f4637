@@ -1,0 +1,9 @@
+
+Feature: Registration Page Features
+  
+  Scenario: Verify redirection of trial India url
+    Given I am a new user
+    When I hit the url "https://code-stage.whjr.one/trial/register"
+    Then I should be redirected to the url "https://code-stage.whjr.one/coding/mastery/trial/register"
+    
+  
